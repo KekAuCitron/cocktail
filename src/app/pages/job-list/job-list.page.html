@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>JobList</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list inset="true">
+    <ion-item *ngFor='let job of jobList' (click)="openOffer(job)">
+      <ion-label>
+        <ion-text>
+          <h3>{{ job.bar }}</h3>
+        </ion-text>
+        <ion-text >
+            <p>Débute le: {{job.period[0].start}}</p>
+            <p>Salaire horaire: {{job.hourlyWage}}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
