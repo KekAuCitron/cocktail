@@ -1,41 +1,40 @@
 <ion-header>
-  <ion-toolbar>
     <ion-title>Formulaire d'inscription</ion-title>
-  </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
+<ion-content fullscreen>
   <form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
     <ion-item>
       <ion-label>Prénom</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.firstname" ngControl="firstname"></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.firstname" ngControl="firstname" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Nom</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.lastname" ngControl="lastname"></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.lastname" ngControl="lastname" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input type="mail" required [(ngModel)]="user.email" ngControl="email"></ion-input>
+      <ion-input type="mail" required [(ngModel)]="user.email" ngControl="email" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Téléphone</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.phone" ngControl="phone"></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.phone" ngControl="phone" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Adresse</ion-label>
-      <ion-input type="address" required [(ngModel)]="user.address" ngControl="address"></ion-input>
+      <ion-input type="address" required [(ngModel)]="user.address" ngControl="address" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>ZIP</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.zip" ngControl="zip"></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.zip" ngControl="zip" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Ville</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.city" ngControl="city"></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.city" ngControl="city" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
 
     <button ion-button type="submit" block>Add todo</button>
   </form>
 </ion-content>
+
+<app-footer></app-footer>

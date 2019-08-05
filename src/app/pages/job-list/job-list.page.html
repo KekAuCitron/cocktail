@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding fullscreen>
   <ion-list inset="true">
     <ion-item *ngFor='let job of jobList' (click)="openOffer(job)">
       <ion-label>
@@ -19,3 +19,5 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<app-footer></app-footer>

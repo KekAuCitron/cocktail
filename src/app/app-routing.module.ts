@@ -3,7 +3,7 @@ import { DataResolverService } from './services/data-resolver.service';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'menu', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)},
   { path: 'job-list', loadChildren: './pages/job-list/job-list.module#JobListPageModule' },
   { path: 'offer/:id',
@@ -13,7 +13,9 @@ const routes: Routes = [
     loadChildren: './pages/offer/offer.module#OfferPageModule' 
   },
   { path: 'user-form', loadChildren: './pages/user-form/user-form.module#UserFormPageModule' },
-  { path: 'bar-form', loadChildren: './pages/bar-form/bar-form.module#BarFormPageModule' }
+  { path: 'bar-form', loadChildren: './pages/bar-form/bar-form.module#BarFormPageModule' },
+  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' }
+
 
 
 ];
