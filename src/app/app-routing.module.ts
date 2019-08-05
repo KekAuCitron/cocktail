@@ -11,7 +11,11 @@ const routes: Routes = [
       special: DataResolverService
     }, 
     loadChildren: './pages/offer/offer.module#OfferPageModule' 
-  }
+  },
+  { path: 'user-form', loadChildren: './pages/user-form/user-form.module#UserFormPageModule' },
+  { path: 'bar-form', loadChildren: './pages/bar-form/bar-form.module#BarFormPageModule' }
+
+
 ];
 
 @NgModule({
