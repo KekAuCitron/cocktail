@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './footer/footer.component';
 import { IonicModule } from '@ionic/angular';
 
+import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
+
+
 @NgModule({
-  declarations: [ FooterComponent ],
+  declarations: [ FooterComponent, MenuComponent ],
   imports: [
     CommonModule,
     IonicModule
   ],
-  exports: [FooterComponent]
+  exports: [FooterComponent, MenuComponent]
 })
 export class SharedModule { }

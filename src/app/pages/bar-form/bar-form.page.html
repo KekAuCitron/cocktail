@@ -4,37 +4,41 @@
   </ion-toolbar>
 </ion-header>
 
+<app-menu></app-menu>
+
 <ion-content padding fullscreen>
   <form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
     <ion-item>
       <ion-label>Nom de l'établissement:</ion-label>
-      <ion-input type="text" required [(ngModel)]="todo.establishmentName" ngControl="establishmentName"></ion-input>
+      <ion-input type="text" required [(ngModel)]="bar.establishmentName" ngControl="establishmentName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input type="mail" required [(ngModel)]="todo.email" ngControl="email"></ion-input>
+      <ion-input type="mail" required [(ngModel)]="bar.email" ngControl="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Téléphone:</ion-label>
-      <ion-input type="text" required [(ngModel)]="todo.phone" ngControl="phone"></ion-input>
+      <ion-input type="text" required [(ngModel)]="bar.phone" ngControl="phone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Adresse:</ion-label>
-      <ion-input type="address" required [(ngModel)]="todo.address" ngControl="address"></ion-input>
+      <ion-input type="address" required [(ngModel)]="bar.address" ngControl="address"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Site Web:</ion-label>
-      <ion-input type="text" required [(ngModel)]="todo.website" ngControl="website"></ion-input>
+      <ion-input type="text" required [(ngModel)]="bar.website" ngControl="website"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Theme:</ion-label>
-      <ion-input type="text" required [(ngModel)]="todo.theme" ngControl="theme"></ion-input>
+      <ion-input type="text" required [(ngModel)]="bar.theme" ngControl="theme"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Description:</ion-label>
-      <ion-input type="text" required [(ngModel)]="todo.description" ngControl="description"></ion-input>
+      <ion-input type="text" required [(ngModel)]="bar.description" ngControl="description"></ion-input>
     </ion-item>
 
-    <button ion-button type="submit" block>Add Todo</button>
+    <button ion-button type="submit" block>Add bar</button>
   </form>
 </ion-content>
+
+<app-footer></app-footer>
