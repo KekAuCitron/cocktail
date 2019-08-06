@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { LoggerService } from 'src/app/services/logger.service';
+import { LogginModalPage } from '../loggin-modal/loggin-modal.page';
+
 
 @Component({
   selector: 'app-footer',
@@ -8,21 +11,20 @@ import { MenuController } from '@ionic/angular';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private menu: MenuController) { }
+  userLogged : boolean = false;
+
+  constructor (public modalController: ModalController,
+              public loggerService: LoggerService) { 
+    this.userLogged = this.loggerService.getData()? true : false;
+  }
 
   ngOnInit() {}
 
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: LogginModalPage
+    });
+    return await modal.present();
   }
 
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
 }

@@ -13,7 +13,8 @@ const routes: Routes = [
     loadChildren: './pages/offer/offer.module#OfferPageModule' 
   },
   { path: 'user-form', loadChildren: './pages/user-form/user-form.module#UserFormPageModule' },
-  { path: 'bar-form', loadChildren: './pages/bar-form/bar-form.module#BarFormPageModule' },
+  { path: 'bar-form', loadChildren: './pages/bar-form/bar-form.module#BarFormPageModule' },  { path: 'loggin-modal', loadChildren: './shared/loggin-modal/loggin-modal.module#LogginModalPageModule' },
+
 ];
 
 @NgModule({

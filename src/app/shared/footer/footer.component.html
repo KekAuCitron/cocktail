@@ -1,10 +1,9 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="secondary">
-      <ion-back-button
-        [text]="buttonText"
-        [icon]="buttonIcon">
-      </ion-back-button>
+      <ion-button (click)="presentModal()">
+        Profile
+      </ion-button> 
     </ion-buttons>
     <ion-buttons slot="primary">
       <ion-menu-button autoHide="false" (click)="openFirst()"></ion-menu-button>    
