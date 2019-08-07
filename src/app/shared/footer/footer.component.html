@@ -1,7 +1,10 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="secondary">
-      <ion-button (click)="presentModal()">
+      <ion-button (click)="presentModal()" *ngIf="!userLogged">
+        Profile
+      </ion-button>
+      <ion-button routerLink="/user-profile" routerDirection="forward" *ngIf="userLogged">
         Profile
       </ion-button> 
     </ion-buttons>

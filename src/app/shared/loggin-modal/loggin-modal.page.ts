@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-loggin-modal',
@@ -8,7 +9,9 @@ import { ModalController } from '@ionic/angular';
 })
 export class LogginModalPage implements OnInit {
 
-  constructor(public modaleController: ModalController) { }
+  logger = {};
+
+  constructor(public modaleController: ModalController, public loggerService: LoggerService ) { }
 
   ngOnInit() {
   }
@@ -19,5 +22,9 @@ export class LogginModalPage implements OnInit {
     this.modaleController.dismiss({
       'dismissed': true
     });
+  }
+
+  logForm() {
+    this.loggerService.setData(this.logger);
   }
 }

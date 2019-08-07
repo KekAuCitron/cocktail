@@ -22,7 +22,8 @@ export class FooterComponent implements OnInit {
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: LogginModalPage
+      component: LogginModalPage,
+      cssClass: 'loggin-modal'
     });
     return await modal.present();
   }
