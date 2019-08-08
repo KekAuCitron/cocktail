@@ -23,8 +23,13 @@ export class FooterComponent implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: LogginModalPage,
-      cssClass: 'loggin-modal'
+      cssClass: 'loggin-modal',
+      showBackdrop : true,
+      backdropDismiss: true
     });
+    modal.addEventListener('ionModalWillDismiss', (event: any) => {
+      this.userLogged = this.loggerService.getData()? true : false;
+    })
     return await modal.present();
   }
 

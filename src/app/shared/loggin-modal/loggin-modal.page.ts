@@ -26,5 +26,6 @@ export class LogginModalPage implements OnInit {
 
   logForm() {
     this.loggerService.setData(this.logger);
+    this.dismiss();
   }
 }
