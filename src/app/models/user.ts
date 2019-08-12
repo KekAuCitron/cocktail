@@ -9,3 +9,7 @@ export class User {
     zip?: number;
     city?: string; 
 }
+
+function getId() {
+    return this.id;
+}

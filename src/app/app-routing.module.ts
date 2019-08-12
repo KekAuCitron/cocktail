@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'bar-form', loadChildren: './pages/bar-form/bar-form.module#BarFormPageModule' },
   { path: 'loggin-modal', loadChildren: './shared/loggin-modal/loggin-modal.module#LogginModalPageModule' },
   { path: 'user-profile', loadChildren: './pages/user-profile/user-profile.module#UserProfilePageModule' },
-  { path: 'bar-profile', loadChildren: './pages/bar-profile/bar-profile.module#BarProfilePageModule' },
+  { path: 'bar-profile', loadChildren: './pages/bar-profile/bar-profile.module#BarProfilePageModule' },  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
+
 
 ];
 

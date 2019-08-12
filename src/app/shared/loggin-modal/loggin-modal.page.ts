@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, Events } from '@ionic/angular';
+import { ModalController, Events, NavController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
 import { LoggerService } from 'src/app/services/logger/logger.service';
-import { UserService } from 'src/app/services/user/user.service';
-import { BarService } from 'src/app/services/bar/bar.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { RegisterPage } from 'src/app/pages/register/register.page';
 
 @Component({
   selector: 'app-loggin-modal',
@@ -16,8 +18,9 @@ export class LogginModalPage implements OnInit {
   constructor(
     public modaleController: ModalController, 
     public loggerService: LoggerService, 
-    private userService: UserService, 
-    private barService: BarService,
+    private authService: AuthService,
+    private alertService:  AlertService,
+    private navCtrl: NavController,
     public events: Events
   ) { }
 
@@ -25,32 +28,32 @@ export class LogginModalPage implements OnInit {
   }
 
   dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
     this.modaleController.dismiss({
       'dismissed': true
     });
   }
 
-  logForm() {
-    console.log('log!')
-    switch (this.logger.type) {
-      case "user" : 
-        let user = this.userService.loggUser(this.logger.email); 
-        console.log('user', user);
-        (user)? this.loggerService.setData(user) : '';
-        this.events.publish('user:logged', user);
-        break;
-      case "bar" :
-        let bar = this.barService.loggBar(this.logger.email); 
-        console.log(bar);
-        (bar)? this.loggerService.setData(bar) : '';
-        this.events.publish('user:logged', bar);
-        break;
-      default:
-        console.log('void');
-    }
-    console.log("logged: ", this.loggerService.getData());
+  async RegisterModal() {
     this.dismiss();
+    const registerModal = await this.modaleController.create({
+      component: RegisterPage
+    });
+    return await registerModal.present();
   }
+
+  login(form: NgForm){
+    this.authService.login(form.value.email, form.value.type).subscribe(
+      data => {
+        this.alertService.presentToast("Logged In");
+      }, 
+      error => {
+        console.log(error);
+      },
+      () => {
+        this.dismiss();
+        this.navCtrl.navigateRoot('/job-list');
+      }
+    )
+  }
+
 }

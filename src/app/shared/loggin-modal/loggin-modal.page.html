@@ -8,21 +8,23 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="logForm()" novalidate>
+  <form  #form="ngForm" (ngSubmit)="logForm()" novalidate>
     <ion-item>
-      <ion-label position:"floating">Email</ion-label>
-      <ion-input type="mail" required  [(ngModel)]="logger.email" name="email"></ion-input>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="mail" required ngModel name="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required [(ngModel)]="logger.password" name="password"></ion-input>
+      <ion-input type="password" required ngModel name="password"></ion-input>
     </ion-item>
 
-    <ion-radio-group [(ngModel)]="logger.type" name="type">
+    <ion-radio-group ngModel name="type">
       <ion-item>
         <ion-label>Utilisateur</ion-label>
         <ion-radio slot="start" color="success" value="user" checked></ion-radio>
-
+      </ion-item>
+      
+      <ion-item>
         <ion-label>Bar</ion-label>
         <ion-radio slot="start" color="tertiary" value="bar"></ion-radio>
       </ion-item>

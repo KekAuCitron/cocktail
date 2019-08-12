@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Formulaire d'inscription</ion-title>
+    </ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="switchCase('user')">User</ion-button>
+      <ion-button (click)="switchCase('bar')">Bar</ion-button>
+    </ion-buttons>
+</ion-header>
+
+<ion-content [ngClass]="formType == 'user'? 'active' : 'inactive'">
+    <!--form #form="ngForm" (ngSubmit)="register(form)" novalidate>
+        <ion-item>
+            <ion-label>Prénom</ion-label>
+            <ion-input ngModel name="firstname" required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Nom</ion-label>
+            <ion-input [(ngModel)]="user.lastname" [ngModelOptions]="{standalone: true}" ngControl="lastname" required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Email</ion-label>
+            <ion-input [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" ngControl="email" required type="mail"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Téléphone</ion-label>
+            <ion-input [(ngModel)]="user.phone" [ngModelOptions]="{standalone: true}" ngControl="phone" required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Adresse</ion-label>
+            <ion-input [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" ngControl="address" required type="address"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>ZIP</ion-label>
+            <ion-input [(ngModel)]="user.zip" [ngModelOptions]="{standalone: true}" ngControl="zip" required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Ville</ion-label>
+            <ion-input [(ngModel)]="user.city" [ngModelOptions]="{standalone: true}" ngControl="city" required type="text"></ion-input>
+        </ion-item>
+
+        <button block ion-button type="submit">Add todo</button>
+    </form-->
+    <div>USER</div>
+</ion-content>
+
+<ion-content [ngClass]="formType == 'bar'? 'active' : 'inactive'">
+  <div>BAR</div>
+</ion-content>
+
