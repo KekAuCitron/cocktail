@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { LoggerService } from 'src/app/services/logger.service';
+import { ModalController, Events } from '@ionic/angular';
+import { LoggerService } from 'src/app/services/logger/logger.service';
 import { LogginModalPage } from '../loggin-modal/loggin-modal.page';
 
 
@@ -11,14 +11,20 @@ import { LogginModalPage } from '../loggin-modal/loggin-modal.page';
 })
 export class FooterComponent implements OnInit {
 
-  userLogged : boolean = false;
+  userLogged : any;
 
-  constructor (public modalController: ModalController,
-              public loggerService: LoggerService) { 
-    this.userLogged = this.loggerService.getData()? true : false;
+  constructor (
+    public modalController: ModalController,
+    public loggerService: LoggerService,
+    public events: Events) { 
+      events.subscribe('user:logged', (user) => {
+        this.userLogged = user;
+      })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userLogged = this.loggerService.getData()? true : false;
+  }
 
   async presentModal() {
     const modal = await this.modalController.create({
@@ -27,9 +33,7 @@ export class FooterComponent implements OnInit {
       showBackdrop : true,
       backdropDismiss: true
     });
-    modal.addEventListener('ionModalWillDismiss', (event: any) => {
-      this.userLogged = this.loggerService.getData()? true : false;
-    })
+
     return await modal.present();
   }
 

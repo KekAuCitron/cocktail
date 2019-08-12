@@ -7,6 +7,12 @@
       </ion-header>
       <ion-content>
         <ion-list>
+          <ion-item *ngIf="user">
+            <ion-thumbnail>
+              <img src="{{user.profilePicture}}">
+            </ion-thumbnail>
+          </ion-item>
+
           <ion-item routerLink="/job-list" routerDirection="forward" (click)='closeMenu()'>
             <ion-icon name="home" slot="start"></ion-icon>
             <ion-label>Liste des offres</ion-label>

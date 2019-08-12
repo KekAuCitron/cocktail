@@ -10,11 +10,11 @@
 <ion-content padding>
   <form (ngSubmit)="logForm()" novalidate>
     <ion-item>
-      <ion-label>Email: </ion-label>
+      <ion-label position:"floating">Email</ion-label>
       <ion-input type="mail" required  [(ngModel)]="logger.email" name="email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Password: </ion-label>
+      <ion-label position="floating">Password</ion-label>
       <ion-input type="password" required [(ngModel)]="logger.password" name="password"></ion-input>
     </ion-item>
 
@@ -22,15 +22,20 @@
       <ion-item>
         <ion-label>Utilisateur</ion-label>
         <ion-radio slot="start" color="success" value="user" checked></ion-radio>
-      </ion-item>
 
-      <ion-item>
         <ion-label>Bar</ion-label>
         <ion-radio slot="start" color="tertiary" value="bar"></ion-radio>
       </ion-item>
     </ion-radio-group>
 
+    <p text-right>Forgot Password?</p>
+
 
     <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
   </form>
+
+  <p text-center>Don't have a account?</p>
+
+  <ion-button expand="block" color="danger" (click)="registerModal()">Register</ion-button>
+
 </ion-content>

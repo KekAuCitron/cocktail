@@ -1,5 +1,7 @@
 {
   "name": "CockTales",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

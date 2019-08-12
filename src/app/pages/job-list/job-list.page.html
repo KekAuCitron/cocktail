@@ -7,14 +7,17 @@
 
 <ion-content padding fullscreen>
   <ion-list inset="true">
-    <ion-item *ngFor='let job of jobList' (click)="openOffer(job)">
+    <ion-item *ngFor='let jobOffer of jobOffers' (click)="openOffer(job)">
+      <ion-thumbnail slot="start">
+        <img src="{{jobOffer.bar.profilePicture}}">
+      </ion-thumbnail>
       <ion-label>
         <ion-text>
-          <h3>{{ job.bar }}</h3>
+          <h3>{{ jobOffer.bar.establishmentName }}</h3>
         </ion-text>
         <ion-text >
-            <p>Débute le: {{job.period[0].start}}</p>
-            <p>Salaire horaire: {{job.hourlyWage}}</p>
+          <p>Débute le: {{jobOffer.period[0].start}}</p>
+          <p>Salaire horaire: {{jobOffer.hourlyWage}} €</p>
         </ion-text>
       </ion-label>
     </ion-item>
