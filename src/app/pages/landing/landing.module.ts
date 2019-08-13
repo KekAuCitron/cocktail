@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SharedModule } from '../../shared/shared.module';
-import { UserFormPage } from './user-form.page';
+import { LandingPage } from './landing.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserFormPage
+    component: LandingPage
   }
 ];
 
@@ -20,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    SharedModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [UserFormPage]
+  declarations: [LandingPage]
 })
-export class UserFormPageModule {}
+export class LandingPageModule {}

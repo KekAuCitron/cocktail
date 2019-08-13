@@ -29,13 +29,11 @@ export class UserService {
   }
 
   logUser(email: string) {
-    this.users.forEach(user => {
-      if (user.email == email){ 
-        console.log('user.email: ', user.email);
-        console.log('email: ', email);
-        return user; 
+    for (let user of this.users) {
+      if (email == user.email) {
+        return user;
       }
-    });
-    return this.users[0];
+    }
+    return false;
   }
 }

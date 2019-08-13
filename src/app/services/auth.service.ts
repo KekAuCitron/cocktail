@@ -39,12 +39,16 @@ export class AuthService {
         break;
 
       default :
-      return 'error';
+      return false;
     }
   }
 
   logout() {
     this.userLogged = null;
+  }
+
+  getToken() {
+    return this.token;
   }
 
 }

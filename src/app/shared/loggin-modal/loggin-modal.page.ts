@@ -41,8 +41,8 @@ export class LogginModalPage implements OnInit {
     return await registerModal.present();
   }
 
-  login(form: NgForm){
-    this.authService.login(form.value.email, form.value.type).subscribe(
+  logForm(form: NgForm){
+    /*this.authService.login(form.value.email, form.value.type).subscribe(
       data => {
         this.alertService.presentToast("Logged In");
       }, 
@@ -53,7 +53,15 @@ export class LogginModalPage implements OnInit {
         this.dismiss();
         this.navCtrl.navigateRoot('/job-list');
       }
-    )
+    )*/
+
+    if (this.authService.login(form.value.email, form.value.type)) {
+      this.alertService.presentToast("Logged In");
+      this.dismiss();
+      this.navCtrl.navigateRoot('/job-list');
+    } else {
+      this.alertService.presentToast("Identifiants incorrects");
+    }
   }
 
 }
