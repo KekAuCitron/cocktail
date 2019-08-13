@@ -1,50 +1,83 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>Formulaire d'inscription</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss()" slot="secondary">Fermer</ion-button>
+        </ion-buttons>
     </ion-toolbar>
-    <ion-buttons>
-      <ion-button (click)="switchCase('user')">User</ion-button>
-      <ion-button (click)="switchCase('bar')">Bar</ion-button>
-    </ion-buttons>
+        <ion-buttons>
+            <ion-button (click)="switchCase('user')" [disabled]="(formType == 'user')? true : false">User</ion-button>
+            <ion-button (click)="switchCase('bar')" [disabled]="(formType == 'bar')? true : false">Bar</ion-button>
+        </ion-buttons>
 </ion-header>
 
-<ion-content [ngClass]="formType == 'user'? 'active' : 'inactive'">
-    <!--form #form="ngForm" (ngSubmit)="register(form)" novalidate>
+<ion-content fullscreen padding>
+    <form #form="ngForm" (ngSubmit)="registerUser(form)" [ngClass]="formType == 'user'? 'active' : 'inactive'" novalidate>
         <ion-item>
-            <ion-label>Prénom</ion-label>
-            <ion-input ngModel name="firstname" required type="text"></ion-input>
+            <ion-label position="floating">Prénom</ion-label>
+            <ion-input name="firstname" ngModel required type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Nom</ion-label>
-            <ion-input [(ngModel)]="user.lastname" [ngModelOptions]="{standalone: true}" ngControl="lastname" required type="text"></ion-input>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input name="lastname" ngModel required type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Email</ion-label>
-            <ion-input [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" ngControl="email" required type="mail"></ion-input>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input name="email" ngModel required type="mail"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Téléphone</ion-label>
-            <ion-input [(ngModel)]="user.phone" [ngModelOptions]="{standalone: true}" ngControl="phone" required type="text"></ion-input>
+            <ion-label position="floating">Téléphone</ion-label>
+            <ion-input name="phone" ngModel required type="number"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Adresse</ion-label>
-            <ion-input [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" ngControl="address" required type="address"></ion-input>
+            <ion-label position="floating">Adresse</ion-label>
+            <ion-input name="address" ngModel required type="address"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>ZIP</ion-label>
-            <ion-input [(ngModel)]="user.zip" [ngModelOptions]="{standalone: true}" ngControl="zip" required type="text"></ion-input>
+            <ion-label position="floating">ZIP</ion-label>
+            <ion-input name="zip" ngModel required type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Ville</ion-label>
-            <ion-input [(ngModel)]="user.city" [ngModelOptions]="{standalone: true}" ngControl="city" required type="text"></ion-input>
+            <ion-label position="floating">Ville</ion-label>
+            <ion-input name="city" ngModel required type="text"></ion-input>
         </ion-item>
 
-        <button block ion-button type="submit">Add todo</button>
-    </form-->
-    <div>USER</div>
+        <ion-button color="danger" expand="block" ion-button type="submit">Inscription utilisateur</ion-button>
+    </form>
+
+    <form #form="ngForm" (ngSubmit)="registerBar(form)" [ngClass]="formType == 'bar'? 'active' : 'inactive'" novalidate>
+        <ion-item>
+            <ion-label position="floating">Nom de l'établissement</ion-label>
+            <ion-input name="establishmentName" ngModel required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input name="email" ngModel required type="mail"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Téléphone</ion-label>
+            <ion-input name="phone" ngModel required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Adresse</ion-label>
+            <ion-input name="address" ngModel required type="address"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Site Web</ion-label>
+            <ion-input name="website" ngModel required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Theme</ion-label>
+            <ion-input name="theme" ngModel required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-input name="description" ngModel required type="text"></ion-input>
+        </ion-item>
+
+        <ion-button color="danger" expand="block" ion-button type="submit">Inscription bar</ion-button>
+    </form>
+
+    <p text-center>Vous êtes déjà inscrit?</p>
+    <ion-button (click)="loginModal()" color="primary" expand="full">Connexion</ion-button>
 </ion-content>
-
-<ion-content [ngClass]="formType == 'bar'? 'active' : 'inactive'">
-  <div>BAR</div>
-</ion-content>
-

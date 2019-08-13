@@ -33,7 +33,7 @@ export class LogginModalPage implements OnInit {
     });
   }
 
-  async RegisterModal() {
+  async registerModal() {
     this.dismiss();
     const registerModal = await this.modaleController.create({
       component: RegisterPage
