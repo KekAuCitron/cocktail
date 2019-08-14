@@ -16,14 +16,11 @@ export class AuthService {
 
 
   constructor(
-    private http: HttpClient,
-    private storage: NativeStorage,
-    private env: EnvService,
     private userService: UserService,
     private barService : BarService
   ) { 
-    this.userLogged = this.userService.getUser(2);
-    this.userType = 'user';
+    this.userLogged = this.barService.getBar(1);
+    this.userType = 'bar';
   }
 
   login(email: string, userType: string) {

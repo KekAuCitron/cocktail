@@ -44,6 +44,7 @@ export class BarProfilePage implements OnInit {
   ngOnInit() {
     this.bar = this.AuthService.getLoggedUser();
     this.barRates = this.barService.getBarRates(this.bar.id);
+    console.log(this.bar);
   }
 
   switchTab(type: string) {

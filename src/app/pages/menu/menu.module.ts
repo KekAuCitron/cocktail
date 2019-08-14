@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'user-profile',
         loadChildren: 'src/app/pages/user-profile/user-profile.module#UserProfilePageModule'
+      },
+      {
+        path: 'bar-profile',
+        loadChildren: 'src/app/pages/bar-profile/bar-profile.module#BarProfilePageModule'
       }
     ]
   }

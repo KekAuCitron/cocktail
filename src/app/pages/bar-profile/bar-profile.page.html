@@ -1,10 +1,10 @@
 <ion-header>
     <ion-toolbar>
-        <ion-slides pager="true">
+        <!--ion-slides pager="true">
             <ion-slide *ngFor="let image of bar.images">
                 <img src="{{image.url}}"/>
             </ion-slide>
-        </ion-slides>
+        </ion-slides-->                 
     </ion-toolbar>
     <ion-buttons>
         <ion-button (click)="switchCase('contact')" [disabled]="(tab == 'contact')? true : false" class="formTypeButton">Contact</ion-button>
@@ -13,39 +13,39 @@
     </ion-buttons>
 </ion-header>
 
-<form (ngSubmit)="editBar(form)" [formGroup]="barForm" class="editForm" novalidate></form>
-<ion-content [ngClass]="tab == 'coordonnees'? 'active' : 'inactive'" fullscreen padding>
+<form (ngSubmit)="editBar(form)" [formGroup]="barForm" class="editForm" novalidate>
+  <ion-content [ngClass]="tab == 'coordonnees'? 'active' : 'inactive'" fullscreen padding>
     <ion-card>
         <ion-icon (click)="edit()" name="create"></ion-icon>
         <ion-card-content>
             <ion-item [lines]="editMode? 'inset' : 'none'">
                 <ion-label position="floating">Email</ion-label>
-                <ion-input name="email" formcontrolname="email" type="mail" value={{user.email}}></ion-input>
+                <ion-input name="email" formcontrolname="email" type="mail" value={{bar.email}}></ion-input>
             </ion-item>
             <ion-item [lines]="editMode? 'inset' : 'none'">
                 <ion-label position="floating">Téléphone</ion-label>
-                <ion-input name="phone" formcontrolname="phone" type="number" value={{user.phone}}></ion-input>
+                <ion-input name="phone" formcontrolname="phone" type="number" value={{bar.phone}}></ion-input>
             </ion-item>
             <ion-item [lines]="editMode? 'inset' : 'none'">
                 <ion-label position="floating">Adresse</ion-label>
-                <ion-input name="address" formcontrolname="address" type="text" value={{user.address}}></ion-input>
+                <ion-input name="address" formcontrolname="address" type="text" value={{bar.address}}></ion-input>
             </ion-item>
             <ion-item [lines]="editMode? 'inset' : 'none'">
                 <ion-label position="floating">Theme</ion-label>
-                <ion-input name="theme" formcontrolname="theme" type="text" value={{user.zip}}></ion-input>
+                <ion-input name="theme" formcontrolname="theme" type="text" value={{bar.zip}}></ion-input>
             </ion-item>
             <ion-item [lines]="editMode? 'inset' : 'none'">
                 <ion-label position="floating">Web</ion-label>
-                <ion-input name="web" formcontrolname="web" type="text" value={{user.city}}></ion-input>
+                <ion-input name="web" formcontrolname="web" type="text" value={{bar.city}}></ion-input>
             </ion-item>
 
             <ion-button [ngClass]="editMode? 'active' : 'inactive'" color="primary" expand="block" ion-button type="submit">Sauvegarder</ion-button>
 
-        </ion-card-content>
+      </ion-card-content>
     </ion-card>
-</ion-content>
+  </ion-content>
 
-<ion-content [ngClass]="tab == 'description'? 'active' : 'inactive'" fullscreen padding>
+  <ion-content [ngClass]="tab == 'description'? 'active' : 'inactive'" fullscreen padding>
     <ion-card>
         <ion-card-content>
             <ion-text>
@@ -53,8 +53,11 @@
             </ion-text>
         </ion-card-content>
     </ion-card>
+  </ion-content>
+</form>
 
-</ion-content></form><ion-content [ngClass]="tab == 'avis'? 'active' : 'inactive'" fullscreen padding>
+
+<ion-content [ngClass]="tab == 'avis'? 'active' : 'inactive'" fullscreen padding>
   <app-rate *ngFor="let barRate of barRates" [barRate]="barRate"></app-rate>
 </ion-content>
 
