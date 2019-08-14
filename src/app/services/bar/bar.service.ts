@@ -12,6 +12,16 @@ export class BarService {
     { id: 3, establishmentName: 'Le Premier Bar Avant le Commencement', profilePicture: "https://st2.depositphotos.com/4397757/8127/v/950/depositphotos_81277088-stock-illustration-martini-cocktail-bar-logo-linear.jpg", images: ["https://assets.punchdrink.com/wp-content/uploads/2019/04/Article-Lazy-Bird-Chicago-Hoxton-Best-New-Bars-Spring-Summer-2019.jpg", "https://ik.imagekit.io/youshould/default_7_SkbNi54z4.jpg", "https://asset.montecarlosbm.com/styles/hero_image_desktop_2x/public/media/orphea/sbm_bb_bar_0003_1_id47390_rsz_2.jpg?itok=IRiLDy9t"], theme: 'Jazz', email: 'premierbar@gmail.com', phone: '0620632391', address: '67 avenue du Départ', web: 'permierbar.com', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dolor malesuada, hendrerit nunc a, rhoncus ex. Duis finibus vitae ante vitae congue. Suspendisse nec orci tortor. In hac habitasse platea dictumst. Nunc velit risus, eleifend id nunc at. '},
   ]
 
+  barRates : {rate: number, commentary: string, userId: number, barId: number}[] = [
+    {rate: 4, commentary: '', userId: 2, barId: 1 },
+    {rate: 3, commentary: '', userId: 1, barId: 3 },
+    {rate: 3, commentary: '', userId: 1, barId: 1 },
+    {rate: 5, commentary: '', userId: 3, barId: 3 },
+    {rate: 4, commentary: '', userId: 1, barId: 2 },
+    {rate: 1, commentary: '', userId: 2, barId: 2 },
+  ]
+
+
   constructor() { }
 
 
@@ -28,11 +38,22 @@ export class BarService {
   }
 
   logBar(email: string) {
-    this.bars.forEach(bar => {
+    for (let bar of this.bars) {
       if (bar.email == email){ 
         return bar;
       }
-    });
+    };
     return false;
   }
+
+  getBarRates(barId: number) {
+    let barRates = [];
+    this.barRates.forEach(barRate => {
+      if(barRate.barId == barId) {
+        barRates.push(barRate);
+      }
+    })
+    return barRates;
+  }
+
 }

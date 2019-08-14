@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { BarProfilePage } from './bar-profile.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RateComponent } from './rate/rate.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  declarations: [BarProfilePage]
+  declarations: [BarProfilePage, RateComponent]
 })
 export class BarProfilePageModule {}

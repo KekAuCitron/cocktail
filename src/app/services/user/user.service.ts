@@ -30,11 +30,11 @@ export class UserService {
   }
 
   getUser(id: number) {
-    this.users.forEach(user => {
-      if (user.id == id){ 
-        return user; 
+    for (let user of this.users) {
+      if (id == user.id) {
+        return user;
       }
-    });
+    }
   }
 
   logUser(email: string) {

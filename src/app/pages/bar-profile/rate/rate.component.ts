@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BarService } from 'src/app/services/bar/bar.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-rate',
@@ -8,15 +8,15 @@ import { BarService } from 'src/app/services/bar/bar.service';
 })
 export class RateComponent implements OnInit {
 
-  @Input() userRate;
+  @Input() barRate;
   stars: any[];
-  bar: any;
+  user: any;
 
-  constructor(private barService: BarService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.stars = Array(this.userRate.rate).fill(0);
-    this.bar = this.barService.getBar(this.userRate.barId);
+    this.stars = Array(this.barRate.rate).fill(0);
+    this.user = this.userService.getUser(this.barRate.userId);
   }
 
 }
