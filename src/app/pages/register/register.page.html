@@ -5,10 +5,10 @@
             <ion-button (click)="dismiss()" slot="secondary">Fermer</ion-button>
         </ion-buttons>
     </ion-toolbar>
-        <ion-buttons >
-            <ion-button class="formTypeButton" (click)="switchCase('user')" [disabled]="(formType == 'user')? true : false">User</ion-button>
-            <ion-button class="formTypeButton" (click)="switchCase('bar')" [disabled]="(formType == 'bar')? true : false">Bar</ion-button>
-        </ion-buttons>
+    <ion-buttons>
+        <ion-button (click)="switchCase('user')" [disabled]="(formType == 'user')? true : false" class="formTypeButton">User</ion-button>
+        <ion-button (click)="switchCase('bar')" [disabled]="(formType == 'bar')? true : false" class="formTypeButton">Bar</ion-button>
+    </ion-buttons>
 </ion-header>
 
 <ion-content fullscreen padding>
@@ -75,7 +75,7 @@
             <ion-input name="description" ngModel required type="text"></ion-input>
         </ion-item>
 
-        <ion-button color="danger" expand="block" ion-button type="submit">Inscription bar</ion-button>
+        <ion-button color="danger" expand="block" type="submit">Inscription bar</ion-button>
     </form>
 
     <p text-center>Vous êtes déjà inscrit?</p>

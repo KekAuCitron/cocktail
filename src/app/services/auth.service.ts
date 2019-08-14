@@ -11,6 +11,7 @@ import { BarService } from './bar/bar.service';
 export class AuthService {
   
   userLogged = null;
+  userType = null;
   token: any;
 
 
@@ -20,12 +21,16 @@ export class AuthService {
     private env: EnvService,
     private userService: UserService,
     private barService : BarService
-  ) { }
+  ) { 
+    this.userLogged = this.userService.getUser(2);
+    this.userType = 'user';
+  }
 
   login(email: string, userType: string) {
     switch (userType) {
       case "user" :
         if (this.userService.logUser(email)) {
+          this.userType = userType;
           this.userLogged = (this.userService.logUser(email));
           return this.userLogged;
         } else { return false; }
@@ -33,6 +38,7 @@ export class AuthService {
 
       case "bar" :
         if (this.barService.logBar(email)) {
+          this.userType = userType;
           this.userLogged = (this.barService.logBar(email));
           return this.userLogged;
         } else { return false; }
@@ -49,6 +55,14 @@ export class AuthService {
 
   getToken() {
     return this.token;
+  }
+
+  getLoggedUser() {
+    return this.userLogged;
+  }
+
+  getUserType() {
+    return this.userType;
   }
 
 }

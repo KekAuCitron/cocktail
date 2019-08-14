@@ -13,6 +13,15 @@ export class UserService {
           { id: 3, firstname: 'Serges', lastname: 'Lamma', profilePicture: 'https://www.photo-cv.com/img/portfolio/fullsize/11.jpg', email: 'sergeslamma@gmail.com', phone: '0625988513', address: '45 avenue des Cabossés', zip: 78415, city: 'Azuria'},
         ]
 
+  userRates : {rate: number, commentary: string, userId: number, barId: number}[] = [
+    {rate: 4, commentary: '', userId: 2, barId: 1 },
+    {rate: 3, commentary: '', userId: 1, barId: 3 },
+    {rate: 3, commentary: '', userId: 1, barId: 1 },
+    {rate: 5, commentary: '', userId: 3, barId: 3 },
+    {rate: 4, commentary: '', userId: 1, barId: 2 },
+    {rate: 2, commentary: '', userId: 2, barId: 2 },
+  ]
+
   constructor() { }
 
 
@@ -36,4 +45,15 @@ export class UserService {
     }
     return false;
   }
+
+  getUserRates(userId: number) {
+    let userRates = [];
+    this.userRates.forEach(userRate => {
+      if(userRate.userId == userId) {
+        userRates.push(userRate);
+      }
+    })
+    return userRates;
+  }
+
 }

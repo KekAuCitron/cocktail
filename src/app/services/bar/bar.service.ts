@@ -20,11 +20,11 @@ export class BarService {
   }
 
   getBar(id: number) {
-    this.bars.forEach(bar => {
-      if (bar.id == id){ 
+    for (let bar of this.bars) {
+      if (id == bar.id) {
         return bar;
       }
-    });
+    }
   }
 
   logBar(email: string) {

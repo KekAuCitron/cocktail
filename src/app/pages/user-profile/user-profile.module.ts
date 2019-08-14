@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { UserProfilePage } from './user-profile.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { RateComponent } from './rate/rate.component';
 
 const routes: Routes = [
   {
@@ -19,8 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  declarations: [UserProfilePage]
+  declarations: [UserProfilePage, RateComponent]
 })
 export class UserProfilePageModule {}

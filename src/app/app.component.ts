@@ -4,7 +4,7 @@ import { Platform, Events } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController } from '@ionic/angular';
-import { LoggerService } from './services/logger/logger.service';
+import { AuthService } from './services/auth.service';
 
 
 @Component({
@@ -14,24 +14,19 @@ import { LoggerService } from './services/logger/logger.service';
 })
 export class AppComponent implements OnInit {
 
-  user?: any;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menu: MenuController,
-    private loggerService: LoggerService,
+    private authService: AuthService,
     public events: Events
   ) {
     this.initializeApp();
-    events.subscribe('user:logged', (user) => {
-      this.user = user;
-    })
   }
 
   ngOnInit() {
-
   }
   
   initializeApp() {
@@ -42,6 +37,6 @@ export class AppComponent implements OnInit {
   }
 
   closeMenu() {
-    this.menu.close('first');
+    this.menu.close('content');
   }
 }

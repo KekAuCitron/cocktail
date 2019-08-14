@@ -58,7 +58,7 @@ export class LogginModalPage implements OnInit {
     if (this.authService.login(form.value.email, form.value.type)) {
       this.alertService.presentToast("Logged In");
       this.dismiss();
-      this.navCtrl.navigateRoot('/job-list');
+      this.navCtrl.navigateRoot('/menu/job-list');
     } else {
       this.alertService.presentToast("Identifiants incorrects");
     }

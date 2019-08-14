@@ -19,7 +19,7 @@ export class LandingPage implements OnInit {
 
   ionViewWillEnter() {
     if (this.authService.getToken()) {
-      this.navCtrl.navigateRoot('/job-list');
+      this.navCtrl.navigateRoot('/menu/job-list');
     }
   }
 
