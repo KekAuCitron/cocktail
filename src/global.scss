@@ -33,8 +33,17 @@
 @import "../src/app/pages/bar-profile/bar-profile.page.scss";
 
 
+
 ion-header {
     ion-buttons {
         text-align: center;
+    }
+
+    ion-toolbar:last-of-type {
+        filter: drop-shadow(2px 4px 6px darkgrey);
+    }
+
+    .vanish-header {
+        transition: 0.3s ease;
     }
 }

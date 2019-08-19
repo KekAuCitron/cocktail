@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { BarProfilePage } from './bar-profile.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RateComponent } from './rate/rate.component';
+import { ScrollVanishDirective } from 'src/app/directives/scroll-vanish.directive';
 
 const routes: Routes = [
   {
@@ -25,6 +26,6 @@ const routes: Routes = [
     SharedModule,
     ReactiveFormsModule
   ],
-  declarations: [BarProfilePage, RateComponent]
+  declarations: [BarProfilePage, RateComponent, ScrollVanishDirective]
 })
 export class BarProfilePageModule {}

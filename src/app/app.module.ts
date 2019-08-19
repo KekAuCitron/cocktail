@@ -16,7 +16,6 @@ import { LogginModalPageModule } from './shared/loggin-modal/loggin-modal.module
 import { RegisterPageModule } from './pages/register/register.module';
 
 
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

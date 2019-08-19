@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { FooterComponent } from './footer/footer.component';
+import { ShrinkingSegmentHeaderComponent } from './shrinking-segment-header/shrinking-segment-header.component';
 
 
 @NgModule({
-  declarations: [ FooterComponent ],
+  declarations: [ FooterComponent, ShrinkingSegmentHeaderComponent ],
   imports: [
     CommonModule,
     IonicModule
   ],
-  exports: [FooterComponent]
+  exports: [FooterComponent, ShrinkingSegmentHeaderComponent]
 })
 export class SharedModule { }

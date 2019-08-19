@@ -1,5 +1,6 @@
 <ion-header>
-    <ion-toolbar>
+    
+    <div class="vanish-header" [myScrollVanish]="scrollArea">
         <ion-item lines="none">
             <ion-avatar>
                 <img src="{{user.profilePicture}}">
@@ -11,59 +12,60 @@
                 {{user.lastname}}
             </ion-title>
         </ion-item>
+    </div>
+
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-button (click)="switchTab('contact')" [disabled]="(tab == 'contact')? true : false" class="formTypeButton">Contact</ion-button>
+            <ion-button (click)="switchTab('cv')" [disabled]="(tab == 'cv')? true : false" class="formTypeButton">CV</ion-button>
+            <ion-button (click)="switchTab('avis')" [disabled]="(tab == 'avis')? true : false" class="formTypeButton">Avis</ion-button>
+        </ion-buttons>
     </ion-toolbar>
-    <ion-buttons>
-        <ion-button (click)="switchTab('contact')" [disabled]="(tab == 'contact')? true : false" class="formTypeButton">Contact</ion-button>
-        <ion-button (click)="switchTab('cv')" [disabled]="(tab == 'cv')? true : false" class="formTypeButton">CV</ion-button>
-        <ion-button (click)="switchTab('avis')" [disabled]="(tab == 'avis')? true : false" class="formTypeButton">Avis</ion-button>
-    </ion-buttons>
+
 </ion-header>
 
-<ion-content [ngClass]="tab == 'contact'? 'active' : 'inactive'" fullscreen padding>
-    <ion-card>
-        <ion-icon name="create" (click)="edit()"></ion-icon>
+<ion-content #scrollArea fullscreen padding [scrollEvents]="true">
+
+    <ion-card [ngClass]="tab == 'contact'? 'active' : 'inactive'">
+        <ion-icon (click)="edit()" name="create"></ion-icon>
         <ion-card-content>
-            <form [formGroup]="userForm" (ngSubmit)="editUser(form)" novalidate class="editForm">
+            <form (ngSubmit)="editUser(form)" [formGroup]="userForm" class="editForm" novalidate>
                 <ion-item [lines]="editMode? 'inset' : 'none'">
                     <ion-label position="floating">Email</ion-label>
-                    <ion-input name="email" formControlName="email" type="mail" value={{user.email}}></ion-input>
+                    <ion-input name="email" formcontrolname="email" type="mail" value={{user.email}}></ion-input>
                 </ion-item>
                 <ion-item [lines]="editMode? 'inset' : 'none'">
                     <ion-label position="floating">Téléphone</ion-label>
-                    <ion-input name="phone" formControlName="phone" type="number" value={{user.phone}}></ion-input>
+                    <ion-input name="phone" formcontrolname="phone" type="number" value={{user.phone}}></ion-input>
                 </ion-item>
                 <ion-item [lines]="editMode? 'inset' : 'none'">
                     <ion-label position="floating">Adresse</ion-label>
-                    <ion-input name="address" formControlName="address" type="text" value={{user.address}}></ion-input>
+                    <ion-input name="address" formcontrolname="address" type="text" value={{user.address}}></ion-input>
                 </ion-item>
                 <ion-item [lines]="editMode? 'inset' : 'none'">
                     <ion-label position="floating">ZIP</ion-label>
-                    <ion-input name="zip" formControlName="zip" type="number" value={{user.zip}}></ion-input>
+                    <ion-input name="zip" formcontrolname="zip" type="number" value={{user.zip}}></ion-input>
                 </ion-item>
                 <ion-item [lines]="editMode? 'inset' : 'none'">
                     <ion-label position="floating">Ville</ion-label>
-                    <ion-input name="city" formControlName="city" type="text" value={{user.city}}></ion-input>
+                    <ion-input name="city" formcontrolname="city" type="text" value={{user.city}}></ion-input>
                 </ion-item>
 
-                <ion-button color="primary" expand="block" ion-button type="submit" [ngClass]="editMode? 'active' : 'inactive'">Sauvegarder</ion-button>
+                <ion-button [ngClass]="editMode? 'active' : 'inactive'" color="primary" expand="block" ion-button type="submit">Sauvegarder</ion-button>
             </form>
         </ion-card-content>
     </ion-card>
-</ion-content>
 
-<ion-content [ngClass]="tab == 'cv'? 'active' : 'inactive'" fullscreen padding>
-    <ion-card>
+    <ion-card [ngClass]="tab == 'cv'? 'active' : 'inactive'">
         <ion-card-content>
             <ion-text>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, similique ad itaque eaque consequatur sapiente velit vitae saepe. Laudantium nam corporis iure vel at, accusamus ratione voluptatem aperiam dolore officia facere deleniti molestias quo est eum repudiandae architecto rerum velit incidunt id? Itaque totam dolor eius, tenetur id expedita provident. Ad, doloribus amet! Ex ipsam expedita illum soluta nulla cumque enim consectetur minus ea recusandae. Sed qui vitae distinctio perspiciatis laboriosam! Alias veritatis quod eius dolores eligendi dolorum, quo officiis animi eveniet saepe atque libero expedita sapiente iste. Consequuntur laboriosam rerum blanditiis totam accusamus incidunt fugit iusto, ea veritatis harum magni! Blanditiis illum maiores quos odio earum natus dolorum asperiores corrupti. Harum distinctio quibusdam neque ipsa rerum libero nostrum molestiae ratione nihil, nobis vel explicabo doloribus, tenetur, suscipit alias ab enim cupiditate rem blanditiis nesciunt. Impedit totam est magnam magni facere mollitia neque repellendus, error eos aperiam quidem consequatur rerum!
             </ion-text>
         </ion-card-content>
     </ion-card>
-</ion-content>
 
+    <app-rate *ngFor="let userRate of userRates" [ngClass]="tab == 'avis'? 'active' : 'inactive'" [userRate]="userRate"></app-rate>
 
-<ion-content [ngClass]="tab == 'avis'? 'active' : 'inactive'" fullscreen padding>
-    <app-rate *ngFor="let userRate of userRates" [userRate]="userRate"></app-rate>
 </ion-content>
 
 

@@ -6,3 +6,26 @@
         opacity: 0.9 !important;
     }
 }
+
+ion-slides {
+    max-height: 180px;
+}
+
+
+
+.bar-header {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+
+    ion-label {
+        color: white;
+        margin-left: 10px;
+    }
+
+    ion-avatar {
+        max-width: 70px !important;
+        max-height: 70px !important;
+    }
+}

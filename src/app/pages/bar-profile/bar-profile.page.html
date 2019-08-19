@@ -1,65 +1,77 @@
 <ion-header>
-    <ion-toolbar>
-        <!--ion-slides pager="true">
+
+    <div [myScrollVanish]="scrollArea" class="vanish-header">
+        <ion-slides pager="true">
             <ion-slide *ngFor="let image of bar.images">
-                <img src="{{image.url}}"/>
+                <ion-img [src]="image"></ion-img>
             </ion-slide>
-        </ion-slides-->                 
+        </ion-slides>
+
+        <ion-item lines="none" color="transparent" class="bar-header">
+                <ion-avatar slot="start">
+                    <img src="{{bar.profilePicture}}">
+                </ion-avatar>
+                <ion-label >
+                    <h1>{{bar.establishmentName}}</h1>
+                </ion-label>
+        </ion-item>
+    </div>
+
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-button (click)="switchTab('coordonnees')" [disabled]="(tab == 'coordonnees')? true : false" class="formTypeButton">Contact</ion-button>
+            <ion-button (click)="switchTab('description')" [disabled]="(tab == 'description')? true : false" class="formTypeButton">Description</ion-button>
+            <ion-button (click)="switchTab('avis')" [disabled]="(tab == 'avis')? true : false" class="formTypeButton">Avis</ion-button>
+        </ion-buttons>
     </ion-toolbar>
-    <ion-buttons>
-        <ion-button (click)="switchTab('coordonnees')" [disabled]="(tab == 'coordonnees')? true : false" class="formTypeButton">Contact</ion-button>
-        <ion-button (click)="switchTab('description')" [disabled]="(tab == 'description')? true : false" class="formTypeButton">CV</ion-button>
-        <ion-button (click)="switchTab('avis')" [disabled]="(tab == 'avis')? true : false" class="formTypeButton">Avis</ion-button>
-    </ion-buttons>
+
 </ion-header>
 
-  <ion-content [ngClass]="tab == 'coordonnees'? 'active' : 'inactive'" fullscreen padding>
-    <ion-card>
+
+<ion-content #scrollArea [scrollEvents]="true" fullscreen padding>
+
+    <ion-card [ngClass]="tab=='coordonnees'?'active':'inactive'">
         <ion-icon (click)="edit()" name="create"></ion-icon>
         <form (ngSubmit)="editBar(form)" [formGroup]="barForm" class="editForm" novalidate>
-        <ion-card-content>
-            <ion-item [lines]="editMode? 'inset' : 'none'">
-                <ion-label position="floating">Email</ion-label>
-                <ion-input name="email" formControlName="email" type="mail" value={{bar.email}}></ion-input>
-            </ion-item>
-            <ion-item [lines]="editMode? 'inset' : 'none'">
-                <ion-label position="floating">Téléphone</ion-label>
-                <ion-input name="phone" formControlName="phone" type="number" value={{bar.phone}}></ion-input>
-            </ion-item>
-            <ion-item [lines]="editMode? 'inset' : 'none'">
-                <ion-label position="floating">Adresse</ion-label>
-                <ion-input name="address" formControlName="address" type="text" value={{bar.address}}></ion-input>
-            </ion-item>
-            <ion-item [lines]="editMode? 'inset' : 'none'">
-                <ion-label position="floating">Theme</ion-label>
-                <ion-input name="theme" formControlName="theme" type="text" value={{bar.zip}}></ion-input>
-            </ion-item>
-            <ion-item [lines]="editMode? 'inset' : 'none'">
-                <ion-label position="floating">Web</ion-label>
-                <ion-input name="web" formControlName="web" type="text" value={{bar.city}}></ion-input>
-            </ion-item>
+            <ion-card-content>
+                <ion-item [lines]="editMode? 'inset' : 'none'">
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input name="email" formcontrolname="email" type="mail" value={{bar.email}}></ion-input>
+                </ion-item>
+                <ion-item [lines]="editMode? 'inset' : 'none'">
+                    <ion-label position="floating">Téléphone</ion-label>
+                    <ion-input name="phone" formcontrolname="phone" type="number" value={{bar.phone}}></ion-input>
+                </ion-item>
+                <ion-item [lines]="editMode? 'inset' : 'none'">
+                    <ion-label position="floating">Adresse</ion-label>
+                    <ion-input name="address" formcontrolname="address" type="text" value={{bar.address}}></ion-input>
+                </ion-item>
+                <ion-item [lines]="editMode? 'inset' : 'none'">
+                    <ion-label position="floating">Theme</ion-label>
+                    <ion-input name="theme" formcontrolname="theme" type="text" value={{bar.theme}}></ion-input>
+                </ion-item>
+                <ion-item [lines]="editMode? 'inset' : 'none'">
+                    <ion-label position="floating">Web</ion-label>
+                    <ion-input name="web" formcontrolname="web" type="text" value={{bar.web}}></ion-input>
+                </ion-item>
 
-            <ion-button [ngClass]="editMode? 'active' : 'inactive'" color="primary" expand="block" ion-button type="submit">Sauvegarder</ion-button>
+                <ion-button [ngClass]="editMode? 'active' : 'inactive'" color="primary" expand="block" ion-button type="submit">Sauvegarder</ion-button>
 
-      </ion-card-content>
-    </form>
+            </ion-card-content>
+        </form>
 
     </ion-card>
-  </ion-content>
 
-  <ion-content [ngClass]="tab == 'description'? 'active' : 'inactive'" fullscreen padding>
-    <ion-card>
+    <ion-card [ngClass]="tab=='description'?'active':'inactive'">
         <ion-card-content>
             <ion-text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, similique ad itaque eaque consequatur sapiente velit vitae saepe. Laudantium nam corporis iure vel at, accusamus ratione voluptatem aperiam dolore officia facere deleniti molestias quo est eum repudiandae architecto rerum velit incidunt id? Itaque totam dolor eius, tenetur id expedita provident. Ad, doloribus amet! Ex ipsam expedita illum soluta nulla cumque enim consectetur minus ea recusandae. Sed qui vitae distinctio perspiciatis laboriosam! Alias veritatis quod eius dolores eligendi dolorum, quo officiis animi eveniet saepe atque libero expedita sapiente iste. Consequuntur laboriosam rerum blanditiis totam accusamus incidunt fugit iusto, ea veritatis harum magni! Blanditiis illum maiores quos odio earum natus dolorum asperiores corrupti. Harum distinctio quibusdam neque ipsa rerum libero nostrum molestiae ratione nihil, nobis vel explicabo doloribus, tenetur, suscipit alias ab enim cupiditate rem blanditiis nesciunt. Impedit totam est magnam magni facere mollitia neque repellendus, error eos aperiam quidem consequatur rerum!
+                {{bar.description}}
             </ion-text>
         </ion-card-content>
     </ion-card>
-  </ion-content>
 
+    <app-rate *ngFor="let barRate of barRates" [barRate]="barRate" [ngClass]="tab=='avis'?'active':'inactive'"></app-rate>
 
-<ion-content [ngClass]="tab == 'avis'? 'active' : 'inactive'" fullscreen padding>
-  <app-rate *ngFor="let barRate of barRates" [barRate]="barRate"></app-rate>
 </ion-content>
 
 <app-footer></app-footer>
